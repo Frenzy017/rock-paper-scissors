@@ -1,91 +1,70 @@
-// Declare global variables for choices and wins count
+let result = document.querySelector("h5");
+let allBtns = document.querySelectorAll(".actionBtn");
+let games = document.querySelector("h1");
+
+// variables for accumulation
 
 let playerWinsCount = 0;
 let computerWinsCount = 0;
-let choice;
+let botChoice;
+let playerChoice;
 
-// Create random counter from 0 to 2;
+allBtns.forEach((button) =>
+  button.addEventListener("click", () => {
+    playerChoice = button.textContent;
+    computerPlay();
+    result.textContent = playRound();
+
+    games.textContent = ` ${playerWinsCount}:${computerWinsCount}`;
+  })
+);
 
 function computerPlay() {
-    choice = Math.floor(Math.random() * 3)
+  botChoice = Math.floor(Math.random() * 3);
 
-    // Random counter accepts actual value
+  // AI Choice
 
-    if (choice === 0) {
-        choice = 'rock'
-    } else if (choice === 1) {
-        choice = 'paper'
-    } else if (choice === 2) {
-        choice = 'scissors'
-    }
-
-    return choice
+  if (botChoice === 0) {
+    botChoice = "rock";
+  } else if (botChoice === 1) {
+    botChoice = "paper";
+  } else if (botChoice === 2) {
+    botChoice = "scissors";
+  }
 }
 
-// Declare variables for AI / Human choices
+function playRound() {
+  // Winning conditions for player
 
-let playerSelection = prompt('Please enter rock, paper or scissors to play').toLowerCase();
-let computerSelection = computerPlay().toLowerCase();
+  if (
+    (playerChoice === "rock" && botChoice === "scissors") ||
+    (playerChoice === "paper" && botChoice === "rock") ||
+    (playerChoice === "scissors" && botChoice === "paper")
+  ) {
+    playerWinsCount++;
 
+    return `You won! ${playerChoice} beats ${botChoice} in a mighty duel!`;
+  }
 
-// Function for each round being played
-// Function accepts playerSelection and computerSelection parameters
+  // Losing conditions for player
 
+  if (
+    (botChoice === "rock" && playerChoice === "scissors") ||
+    (botChoice === "paper" && playerChoice === "rock") ||
+    (botChoice === "scissors" && playerChoice === "paper")
+  ) {
+    computerWinsCount++;
 
+    return `You lost, computer wins! ${botChoice} beats ${playerChoice} in a mighty duel!`;
+  }
 
-function playRound(playerSelection, computerSelection) {
+  // Tie conditions for player and AI
 
-    // If statement for winning conditions for player
-
-    if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
-        (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissors' && computerSelection === 'paper')) {
-
-        playerWinsCount++
-
-        return `You won! ${playerSelection} beats ${computerSelection} in a mighty duel!`
-    }
-
-    // If statement for losing conditions for player
-
-    if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
-        (computerSelection === 'paper' && playerSelection === 'rock') ||
-        (computerSelection === 'scissors' && playerSelection === 'paper')) {
-
-        computerWinsCount++
-
-        return `You lost, computer wins! ${computerSelection} beats ${playerSelection} in a mighty duel!`
-    }
-
-    // If statement for tie conditions between player and computer
-
-    if ((computerSelection === 'rock' && playerSelection === 'rock') ||
-        (computerSelection === 'paper' && playerSelection === 'paper') ||
-        (computerSelection === 'scissors' && playerSelection === 'scissors')) {
-
-        return `Tie game!`
-    }
+  if (
+    (botChoice === "rock" && playerChoice === "rock") ||
+    (botChoice === "paper" && playerChoice === "paper") ||
+    (botChoice === "scissors" && playerChoice === "scissors")
+  ) {
+    return `Tie game!`;
+  }
 }
-
-// Function loops 5 times 
-// Function prints computer wins and player wins
-// Function prompts for an accurate validation 
-
-function game(playRound) {
-    for (let i = 0; i <= 5; i++) {
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Computer wins: ${computerWinsCount}`);
-        console.log(`Player wins: ${playerWinsCount}`)
-
-        playerSelection = prompt('Please enter rock, paper or scissors to play')
-        computerPlay(choice)
-    }
-
-}
-game(playRound)
-
-
-
-
-
-
