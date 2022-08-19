@@ -1,0 +1,74 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(184, 184, 184);
+  color: white;
+  font-family: roboto, arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+}
+
+.buttons {
+  padding-top: 200px;
+  width: 700px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.container {
+  min-width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+h5 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+button:hover {
+  transform: scale(1.1);
+}
+
+h5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+}
