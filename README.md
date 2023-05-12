@@ -1,6 +1,6 @@
 rock-paper-scissors
 
-
+Live demo: https://frenzy017.github.io/rock-paper-scissors/
 
 What I learnt from the rock-paper-scissors project:
 
